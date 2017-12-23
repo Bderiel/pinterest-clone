@@ -2,6 +2,10 @@ h2 {
     color: red;
 }
 
+.app{
+    margin-top: 2%;
+}
+
 .logo {
   padding-top: 0.4em;
   margin-top: 12%;
@@ -10,9 +14,36 @@ h2 {
   width: 2.5em;
 }
 
+.center{
+    text-align: center;
+}
+
 .navbar {
   background-color: black;
   a{
       color:white;
   }
 }
+
+.grid {
+  display: grid;
+   grid-gap: 10px;
+   grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+}
+
+.content-photo{
+    border: solid black 1px;
+    border-radius: 10%;
+    align-items: center;
+    background-color: #F2F2F2;
+    img{
+    border-radius: 10%;
+    max-width: 95%;
+    max-height: 95%;
+    margin-top: 2%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    }
+}
+

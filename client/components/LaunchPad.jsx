@@ -6,17 +6,24 @@ import { logout } from '../redux';
 
 
 const LaunchPad = function (props) {
+  let loopTest = new Array(20).fill(1);
   return (
-    <Fragment>
-      <h2>Brian's Boilermaker</h2>
-      <a href="https://www.linkedin.com/in/brian-deriel/">Click if you want to Hire Me</a>
-      <br />
-      <NavLink to="/login">LogIn</NavLink>
-      <br />
-      <NavLink to="/login">SignUp</NavLink>
-      <h3>{props.user.email} is logged in</h3>
-      {props.user.email ? <button onClick={props.logout}>Log Out</button> : <div />}
-    </Fragment>
+    <div className="app container">
+      <div className="grid">
+        {loopTest.map(test=>{
+          return(
+            <div className="item photo">
+              <div className="content-photo">
+                <img className="photothumb" src="https://www.andybarefoot.com/codepen/images/dogs/dog1.jpg" />
+              <div className="center">
+                <p>Collection Name(clickable)</p>
+              </div>
+              </div>
+            </div>
+          )
+        })}
+      </div>
+    </div>
   );
 };
 
