@@ -2,7 +2,7 @@ const router = require('express').Router();
 const User = require('../models/user');
 
 router.post('/signup', (req, res, next) => {
-  const newUser = new User({ email: req.body.email });
+  const newUser = new User({ email: req.body.email, username: req.body.username, name: req.body.name });
   newUser.password = newUser.generateHash(req.body.password);
   newUser.save()
     .then((createdUser) => {

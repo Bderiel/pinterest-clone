@@ -18,7 +18,7 @@ const NavBar = props => (
       </a>
       {props.user.email ?
         <a className="navbar-item">
-          {props.user.email}
+          {props.user.username}
         </a>
           :
         <Fragment>
