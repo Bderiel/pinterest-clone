@@ -5,11 +5,12 @@ import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { LaunchPad, AuthForm, NavBar, SinglePin } from './components';
 import history from './history';
-import { me } from './redux';
+import { me, pinsThunk } from './redux';
 
 class Routes extends Component {
   componentDidMount() {
     this.props.me(); // Gets current user on application load
+    this.props.pinsThunk();
   }
   render() {
     return (
@@ -20,7 +21,7 @@ class Routes extends Component {
             <Route exact path="/login" component={AuthForm} />
             <Route exact path="/signup" component={AuthForm} />
             <Route path="/:pinId" component={SinglePin} />
-            <Route exact path="/" component={LaunchPad} />
+            <Route component={LaunchPad} />
           </Switch>
         </Fragment>
       </Router>
@@ -28,9 +29,10 @@ class Routes extends Component {
   }
 }
 
-const mapDispatch = { me };
+const mapDispatch = { me, pinsThunk };
 export default connect(null, mapDispatch)(Routes);
 
 Routes.propTypes = {
   me: PropTypes.func.isRequired,
+  pinsThunk: PropTypes.func.isRequired,
 };

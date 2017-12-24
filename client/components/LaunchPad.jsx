@@ -6,29 +6,30 @@ import { logout } from '../redux';
 
 
 const LaunchPad = function (props) {
-  const loopTest = new Array(20).fill(1);
   return (
     <div className="app container">
       <div className="grid">
-        {loopTest.map(test => (
-          <div className="item photo">
-            <div className="content-photo">
-                <img className="photothumb" src="https://www.andybarefoot.com/codepen/images/dogs/dog1.jpg" />
+        {props.pins.length && props.pins.map(pin => (
+          <NavLink to={pin._id}>
+            <div className="item photo">
+              <div className="content-photo">
+                <img className="photothumb" alt="pin could not load" src={pin.image} />
                 <div className="center">
-                  <p>Collection Name(clickable)</p>
+                  <p>{pin.board}</p>
                 </div>
               </div>
-          </div>
+            </div>
+          </NavLink>
           ))}
       </div>
     </div>
   );
 };
 
-const mapState = ({ user }) => ({ user });
+const mapState = ({ user, pins }) => ({ user, pins });
 const mapDispatch = { logout };
 export default connect(mapState, mapDispatch)(LaunchPad);
 
 LaunchPad.propTypes = {
-  user: PropTypes.object.isRequired,
+  pins: PropTypes.array.isRequired,
 };

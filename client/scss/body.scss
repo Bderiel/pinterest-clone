@@ -26,16 +26,17 @@ h2 {
 }
 
 .grid {
-  display: grid;
-   grid-gap: 10px;
-   grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+column-count: 4;
+    column-gap: 1em;
 }
 
 .content-photo{
-    border: solid black 1px;
+    // border: solid black 1px;
     border-radius: 10%;
-    align-items: center;
     background-color: #F2F2F2;
+    display: inline-block;
+    margin: 0 0 1em;
+    width: 100%;
     img{
     border-radius: 10%;
     max-width: 95%;

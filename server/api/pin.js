@@ -29,18 +29,9 @@ router.post('/', (req, res, next) => { // creates a pin for logged in user
     .catch(next);
 });
 
-router.post('/save', (req, res, next) => { // Saves a pin for logged in user
-  const newPin = new Pin({
-    image: req.body.image,
-    description: req.body.description,
-    board: req.body.board,
-    author: req.user.username,
-    tags: req.body.tags,
-  });
-
-  newPin.save()
-    .then(savedPin => res.json(savedPin))
-    .catch(next);
+router.put('/:pinId', (req, res, next) => { // Saves a pin for logged in user
+  const pin = req.param.pinId;
+  // find pin then update to user group
 });
 
 router.delete('/:pinId', (req, res, next) => {
