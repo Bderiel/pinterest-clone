@@ -10,9 +10,7 @@ const NavBar = props => (
       <a className="navbar-item">
           Search BARRRRRR
       </a>
-      <a className="navbar-item">
-          Home
-      </a>
+      <NavLink className="navbar-item" to="/">Home</NavLink>
       <a className="navbar-item">
           Explore
       </a>
