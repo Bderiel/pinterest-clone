@@ -5,6 +5,7 @@ const router = require('express').Router();
 // });
 
 router.use('/pin', require('./pin'));
+router.use('/board', require('./board'));
 
 
 module.exports = router;
