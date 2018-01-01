@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { logout } from '../redux';
 
 const NavBar = props => (
   <nav className="navbar" role="navigation" aria-label="main navigation">
@@ -33,5 +32,5 @@ const NavBar = props => (
 );
 
 const mapState = ({ user }) => ({ user });
-const mapDispatch = { logout };
+const mapDispatch = {};
 export default connect(mapState, mapDispatch)(NavBar);

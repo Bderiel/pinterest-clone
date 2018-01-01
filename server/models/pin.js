@@ -5,9 +5,12 @@ const { Schema } = mongoose;
 const pinSchema = new Schema({
   image: { type: String, required: true },
   description: { type: String, required: false },
-  author: { type: String, required: true },
-  board: { type: String, required: true },
-  tags: { type: String, required: false },
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user',
+  },
+  tags: { type: Array, required: false },
+  count: { type: Number, required: false },
 });
 
 // PageSchema.statics.findByTag = function (tag) {

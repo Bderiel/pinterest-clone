@@ -9,6 +9,11 @@ const userSchema = new Schema({
   username: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  boards: [{ // embedded document
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    pins: [{ type: Schema.Types.ObjectId, ref: 'pin' }], // pins are by reference
+  }],
 });
 
 // check if username / email are unique

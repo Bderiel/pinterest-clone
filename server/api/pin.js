@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Pin = require('../models/pin');
+const User = require('../models/user');
 
 
 router.get('/:userId', (req, res, next) => { // find pin by user;
@@ -19,8 +20,7 @@ router.post('/', (req, res, next) => { // creates a pin for logged in user
   const newPin = new Pin({
     image: req.body.image,
     description: req.body.description,
-    board: req.body.board,
-    author: req.user.username,
+    author: req.user._id,
     tags: req.body.tags,
   });
 
