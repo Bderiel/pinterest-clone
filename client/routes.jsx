@@ -18,10 +18,10 @@ class Routes extends Component {
         <Fragment>
           <NavBar />
           <Switch>
-            <Route exact path="/test" component={Boards} />
+            <Route exact path="/myboards" component={Boards} />
             <Route exact path="/login" component={AuthForm} />
             <Route exact path="/signup" component={AuthForm} />
-            <Route path="/:pinId" component={SinglePin} />
+            <Route path="/pin/:pinId" component={SinglePin} />
             <Route component={LaunchPad} />
           </Switch>
         </Fragment>

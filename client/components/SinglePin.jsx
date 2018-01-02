@@ -6,7 +6,7 @@ import SaveButton from './SaveButton';
 import { logout } from '../redux'; // save and add to colletion
 
 const SinglePin = (props) => {
-  const pin = props.pins.filter(el => el._id == props.match.params.pinId);
+  const pin = props.pins.filter(el => el._id == props.match.params.pinId)
   return (
     <div className="single-content-photo app center container">
       <div className="item photo">

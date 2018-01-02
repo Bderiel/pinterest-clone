@@ -2,8 +2,9 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { logout } from '../redux';
+import BoardItem from './BoardItem';
 
-const testBoards = ['box1','box2','box3','box4']
+const testBoards = ['box1', 'box2', 'box3', 'box4'];
 
 class Boards extends Component {
   constructor() {
@@ -13,6 +14,8 @@ class Boards extends Component {
     // get our boards
   }
   render() {
+    // const boards = this.props.user.boards;
+    // console.log(boards)
     return (
       <div className="container">
         <div className="flex-container">
@@ -24,24 +27,15 @@ class Boards extends Component {
               <p>Add Board</p>
             </div>
           </div>
-       {testBoards.map(el=>{
-         return(
-           <div className="board">
-             <div className="board-button">
-               <img src="assets/add.svg" alt="Kiwi standing on oval"/>
-             </div>
-             <div className="center board-title">
-             <p>{el}</p>
-             </div>
-           </div>
-         )
-       })}
-       </div>
-     </div>
+          {this.props.user.name && this.props.user.boards.map(board => (
+            <BoardItem title={board.title} />
+         ))}
+        </div>
+      </div>
     );
   }
 }
 
-const mapState = ({ pins }) => ({ pins });
+const mapState = ({ user }) => ({ user });
 const mapDispatch = {};
 export default connect(mapState, mapDispatch)(Boards);
