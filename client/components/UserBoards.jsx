@@ -5,8 +5,6 @@ import { logout } from '../redux';
 import BoardItem from './BoardItem';
 import NewBoardForm from './NewBoardForm';
 
-const testBoards = ['box1', 'box2', 'box3', 'box4'];
-
 class Boards extends Component {
   constructor() {
     super();
@@ -42,9 +40,7 @@ class Boards extends Component {
             </div>
           </div>
           {this.props.user.name && this.props.user.boards.map(board => (
-            <NavLink style={{ textDecoration: 'none' }} to={`/board/${board._id}`}>
-              <BoardItem title={board.title} />
-            </NavLink>
+              <BoardItem id={board._id} title={board.title} />
          ))}
         </div>
       </div>

@@ -5,6 +5,7 @@ import history from '../history';
  */
 const GET_USER = 'GET_USER';
 const REMOVE_USER = 'REMOVE_USER';
+const NEW_BOARD = 'NEW_BOARD'
 
 /**
  * INITIAL STATE
@@ -16,6 +17,8 @@ const defaultUser = {};
  */
 const getUser = user => ({ type: GET_USER, user });
 const removeUser = () => ({ type: REMOVE_USER });
+const newBoard = user => ({ type: NEW_BOARD, user });
+
 
 /**
  * THUNK CREATORS
@@ -25,6 +28,13 @@ export const me = () =>
     axios.get('/auth/me')
       .then(res =>
         dispatch(getUser(res.data || defaultUser)))
+      .catch(err => console.log(err));
+
+export const CreateBoardThunk = board =>
+  dispatch =>
+    axios.post('/api/board/', board)
+      .then(res =>
+        dispatch(newBoard(res.data)))
       .catch(err => console.log(err));
 
 export const auth = (email, password, method) =>
@@ -55,6 +65,8 @@ export default function (state = defaultUser, action) {
       return action.user;
     case REMOVE_USER:
       return defaultUser;
+    case NEW_BOARD:
+      return action.user;
     default:
       return state;
   }

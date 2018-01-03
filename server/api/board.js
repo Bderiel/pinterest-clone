@@ -7,14 +7,14 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-  User.update({ _id: req.user._id }, {
+  User.findOneAndUpdate({ _id: req.user._id }, {
     $addToSet: { // creates board if unique name
       boards: {
         title: req.body.title,
         description: req.body.description,
       },
     },
-  })
+  }, { new: true })
     .then(createdBoard => res.json(createdBoard))
     .catch(next);
 });
