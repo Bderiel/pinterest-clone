@@ -14,17 +14,17 @@ const NavBar = props => (
           Explore
       </a>
       {props.user.email ?
-        <a className="navbar-item">
+        <NavLink to="/myboards" className="navbar-item">
           {props.user.username}
-        </a>
+        </NavLink>
           :
         <Fragment>
           <NavLink to="/login" className="navbar-item">
             Log In
-            </NavLink>
+          </NavLink>
           <NavLink to="/signup" className="navbar-item">
               Sign Up
-            </NavLink>
+          </NavLink>
         </Fragment>
           }
     </div>

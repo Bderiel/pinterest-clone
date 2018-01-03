@@ -19,6 +19,21 @@ router.post('/', (req, res, next) => {
     .catch(next);
 });
 
+router.get('/pin/:boardId', (req, res, next) => {
+  const { boardId } = req.params;
+  User.findOne({ 'boards._id': boardId }, { 'boards.$': 1 })
+    .populate({
+      path: 'boards.pins',
+    })
+  // Pin.find() for later
+  //   .populate({ path: 'author', select: 'username'})
+    .exec((err, story) => {
+      if (err) return;
+      res.json(story);
+    })
+    // .then(foundUser => res.json(foundUser))
+    .catch(next);
+});
 router.get('/:user', (req, res, next) => {
   const { user } = req.params;
   User.findOne({ username: user })
