@@ -28,7 +28,7 @@ class Boards extends Component {
             </div>
           </div>
           {this.props.user.name && this.props.user.boards.map(board => (
-            <NavLink to={`/board/${board.title}`}>
+            <NavLink to={`/board/${board._id}`}>
               <BoardItem title={board.title} />
             </NavLink>
          ))}

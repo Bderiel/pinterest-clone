@@ -13,6 +13,7 @@ class Routes extends Component {
     this.props.pinsThunk();
   }
   render() {
+    // /board/: boardId
     return (
       <Router history={history}>
         <Fragment>

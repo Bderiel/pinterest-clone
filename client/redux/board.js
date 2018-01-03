@@ -3,28 +3,28 @@ import axios from 'axios';
 /**
  * ACTION TYPES
  */
-const GET_BOARDS = 'GET_BOARDS';
+const GET_BOARD_ITEMS = 'GET_BOARD';
 
 
 /**
  * ACTION CREATORS
  */
 
-const getBoards = boards => ({ type: GET_BOARDS, boards });
+const getBoardsItem = boards => ({ type: GET_BOARD_ITEMS, boards });
 
 /**
  * THUNK CREATORS
  */
-export const BoardThunk = id =>
+export const SingleBoardThunk = id =>
   dispatch =>
-    axios.get(`/api/board/${id}`)
+    axios.get(`/api/board/pin/${id}`)
       .then(res =>
-        dispatch(getBoards(res.data)))
+        dispatch(getBoardsItem(res.data)))
       .catch(err => console.log(err));
 
-export default function (state = [], action) {
+export default function (state = {}, action) {
   switch (action.type) {
-    case GET_BOARDS:
+    case GET_BOARD_ITEMS:
       return action.boards;
     default:
       return state;

@@ -27,9 +27,9 @@ router.get('/pin/:boardId', (req, res, next) => {
     })
   // Pin.find() for later
   //   .populate({ path: 'author', select: 'username'})
-    .exec((err, story) => {
+    .exec((err, board) => {
       if (err) return;
-      res.json(story);
+      res.json(board.boards[0]);
     })
     // .then(foundUser => res.json(foundUser))
     .catch(next);
