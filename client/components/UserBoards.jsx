@@ -19,7 +19,7 @@ class Boards extends Component {
   componentWillUnmount() {
     document.body.classList.remove('darken');
   }
-  handleForm() {
+  handleForm(evt) {
     this.setState({ form: !this.state.form });
     document.body.classList.toggle('darken');
   }
