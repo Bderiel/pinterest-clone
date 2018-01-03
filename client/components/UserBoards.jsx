@@ -3,15 +3,27 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { logout } from '../redux';
 import BoardItem from './BoardItem';
+import NewBoardForm from './NewBoardForm';
 
 const testBoards = ['box1', 'box2', 'box3', 'box4'];
 
 class Boards extends Component {
   constructor() {
     super();
+    this.state = {
+      form: false,
+    };
+    this.handleForm = this.handleForm.bind(this);
   }
   componentDidMount() {
     // get our boards
+  }
+  componentWillUnmount() {
+    document.body.classList.remove('darken');
+  }
+  handleForm() {
+    this.setState({ form: !this.state.form });
+    document.body.classList.toggle('darken');
   }
   render() {
     // const boards = this.props.user.boards;
@@ -19,7 +31,9 @@ class Boards extends Component {
     return (
       <div className="container">
         <div className="flex-container">
-          <div className="board">
+          {this.state.form ? <NewBoardForm /> :
+          <Fragment /> }
+          <div onClick={this.handleForm} className="board">
             <div className="board-button">
               <img src="assets/add.svg" alt="Kiwi standing on oval" />
             </div>
@@ -28,7 +42,7 @@ class Boards extends Component {
             </div>
           </div>
           {this.props.user.name && this.props.user.boards.map(board => (
-            <NavLink to={`/board/${board._id}`}>
+            <NavLink style={{ textDecoration: 'none' }} to={`/board/${board._id}`}>
               <BoardItem title={board.title} />
             </NavLink>
          ))}

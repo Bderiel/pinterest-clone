@@ -21,6 +21,7 @@ const SinglePin = (props) => {
         </div>
         <div className="container">
           <p className="desc">{pin.length && pin[0].description}</p>
+          <p>Uploaded by....</p>
         </div>
       </div>
     </div>);
