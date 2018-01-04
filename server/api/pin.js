@@ -17,7 +17,7 @@ router.get('/', (req, res, next) => { // finds all pins for homepage
 });
 
 router.post('/', (req, res, next) => { // creates a pin for logged in user
-  const board = req.body.board 
+  const board = req.body.board;
   const newPin = new Pin({
     image: req.body.image,
     description: req.body.description,
@@ -31,13 +31,22 @@ router.post('/', (req, res, next) => { // creates a pin for logged in user
       return savedPin;
     }) // adds pins ref to user model
     .then(createdPin => User.update({ _id: createdPin.author, 'boards.title': board }, { $addToSet: { 'boards.$.pins': createdPin._id } }))
-    .then((test)=>console.log(test))
+    .then(test => console.log(test))
     .catch(next);
 });
 
 
 router.put('/:pinId', (req, res, next) => { // Saves a pin for logged in user
-  const pin = req.param.pinId;
+  const pin = req.params.pinId;
+  const board = req.body.board;
+  Pin.findById(pin)
+    .then((pinToUpdate) => {
+      res.json(pinToUpdate);
+      return pinToUpdate;
+    })
+    .then(updatedPin => User.update({ _id: req.user._id, 'boards.title': board }, { $addToSet: { 'boards.$.pins': updatedPin._id } }))
+    .then(test => console.log(test))
+    .catch(next);
   // find pin then update to user group
 });
 

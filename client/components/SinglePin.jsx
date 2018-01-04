@@ -2,16 +2,17 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import SaveButton from './SaveButton';
+import SavePinToBoard from './SavePinToBoard';
 import { logout } from '../redux'; // save and add to colletion
 
 const SinglePin = (props) => {
   const pin = props.pins.filter(el => el._id == props.match.params.pinId)
   return (
     <div className="single-content-photo app center container">
+      <SavePinToBoard/>
       <div className="item photo">
         <div className="button-position">
-          <SaveButton />
+          <button className="button is-success">Save</button>
         </div>
         <div className="center">
           <p>{pin.length && pin[0].board}</p>

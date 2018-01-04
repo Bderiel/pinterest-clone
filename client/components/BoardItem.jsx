@@ -5,7 +5,7 @@ const BoardItem = props => (
   <div className="board">
     <NavLink to={`/board/${props.id}`}>
     <div className="board-button">
-      <img src="assets/add.svg" alt="Kiwi standing on oval" />
+      <img src="assets/gallery.svg" alt="Pins" />
     </div>
     <div className="center board-title">
       <p>{props.title}</p>

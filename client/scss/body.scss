@@ -105,6 +105,19 @@ h2 {
     background-color: rgba(0, 0, 0, 0.6);
     opacity: 1;
 }
+
+.form-save{
+   display: block;
+   height: 15%;
+   width: 43%;
+   z-index: 10000;
+   border: black solid 1px;
+   border-radius: 8px;   
+   transform: translate(60%, 0);
+   position: absolute;
+   background-color: wheat;
+
+}
 .form-board {
     display: block;
     height: 30%;
@@ -134,4 +147,5 @@ h2 {
         margin-bottom: 1%;
         margin-left: 85%;
     }
+    
 }

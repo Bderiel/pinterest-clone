@@ -1,7 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import { logout } from '../redux';
 import BoardItem from './BoardItem';
 import NewBoardForm from './NewBoardForm';
 
@@ -28,8 +26,9 @@ class Boards extends Component {
     // console.log(boards)
     return (
       <div className="container">
+        <h1>{this.props.user.username}'s Boards</h1>
         <div className="flex-container">
-          {this.state.form ? <NewBoardForm /> :
+          {this.state.form ? <NewBoardForm close={this.handleForm} /> :
           <Fragment /> }
           <div onClick={this.handleForm} className="board">
             <div className="board-button">

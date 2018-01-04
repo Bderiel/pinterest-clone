@@ -17,9 +17,9 @@ class NewBoardForm extends Component {
       <div>
         <form
           onSubmit={(e) => {
-          e.preventDefault();
-          this.props.CreateBoardThunk(this.state);
-        }}
+            e.preventDefault();
+            this.props.CreateBoardThunk(this.state);
+          }}
           className="field form-board">
           <p>Create Board</p>
           <label className="label">Board Title</label>
@@ -29,6 +29,9 @@ class NewBoardForm extends Component {
           <label className="label">Description</label>
           <div className="control">
             <input onChange={e => (this.setState({ description: e.target.value }))} className="input" name="escription" type="text" placeholder="ex Hire Brian" />
+          </div>
+          <div className="control">
+            <button onClick={() => (this.props.close())} className="button is-danger">Close</button>
           </div>
           <div className="control">
             <button className="button is-primary">Create</button>
