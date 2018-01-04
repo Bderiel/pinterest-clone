@@ -11,9 +11,6 @@ class Boards extends Component {
     };
     this.handleForm = this.handleForm.bind(this);
   }
-  componentDidMount() {
-    // get our boards
-  }
   componentWillUnmount() {
     document.body.classList.remove('darken');
   }
@@ -39,7 +36,7 @@ class Boards extends Component {
             </div>
           </div>
           {this.props.user.name && this.props.user.boards.map(board => (
-              <BoardItem id={board._id} title={board.title} />
+            <BoardItem id={board._id} title={board.title} />
          ))}
         </div>
       </div>

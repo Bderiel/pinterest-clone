@@ -5,31 +5,54 @@ import PropTypes from 'prop-types';
 import SavePinToBoard from './SavePinToBoard';
 import { logout } from '../redux'; // save and add to colletion
 
-const SinglePin = (props) => {
-  const pin = props.pins.filter(el => el._id == props.match.params.pinId)
-  return (
-    <div className="single-content-photo app center container">
-      <SavePinToBoard/>
-      <div className="item photo">
-        <div className="button-position">
-          <button className="button is-success">Save</button>
+class SinglePin extends Component {
+  constructor() {
+    super();
+    this.state = {
+      form: false,
+    };
+    this.handleForm = this.handleForm.bind(this);
+  }
+
+  componentWillUnmount() {
+    document.body.classList.remove('darken');
+  }
+
+  handleForm(evt) {
+    this.setState({ form: !this.state.form });
+    document.body.classList.toggle('darken');
+  }
+
+  render() {
+    const pin = this.props.pins.filter(el => el._id == this.props.match.params.pinId);
+    return (
+      <div className="single-content-photo app center container">
+        {this.state.form ? <SavePinToBoard pin={pin.length && pin[0]._id} close={this.handleForm} /> :
+          <Fragment />
+        }
+        <div className="item photo">
+          {this.props.user.username ? <div className="button-position">
+            <button onClick={this.handleForm} className="button is-success">Save</button>
+          </div> :
+          <Fragment />
+          }
+          <div className="center">
+            <p>{pin.length && pin[0].board}</p>
+          </div>
+          <div>
+            <img alt="pin could not load" src={pin.length && pin[0].image} />
+          </div>
+          <div className="container">
+            <p className="desc">{pin.length && pin[0].description}</p>
+            <p>Uploaded by....</p>
+          </div>
         </div>
-        <div className="center">
-          <p>{pin.length && pin[0].board}</p>
-        </div>
-        <div>
-          <img alt="pin could not load" src={pin.length && pin[0].image} />
-        </div>
-        <div className="container">
-          <p className="desc">{pin.length && pin[0].description}</p>
-          <p>Uploaded by....</p>
-        </div>
-      </div>
-    </div>);
-};
+      </div>);
+  }
+}
 
 
-const mapState = ({ pins }) => ({ pins });
+const mapState = ({ user, pins }) => ({ user, pins });
 const mapDispatch = {};
 export default connect(mapState, mapDispatch)(SinglePin);
 

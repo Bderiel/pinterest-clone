@@ -39,6 +39,7 @@ router.post('/', (req, res, next) => { // creates a pin for logged in user
 router.put('/:pinId', (req, res, next) => { // Saves a pin for logged in user
   const pin = req.params.pinId;
   const board = req.body.board;
+  console.log(req.body)
   Pin.findById(pin)
     .then((pinToUpdate) => {
       res.json(pinToUpdate);
