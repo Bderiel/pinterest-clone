@@ -39,14 +39,9 @@ router.post('/', (req, res, next) => { // creates a pin for logged in user
 router.put('/:pinId', (req, res, next) => { // Saves a pin for logged in user
   const pin = req.params.pinId;
   const board = req.body.board;
-  console.log(req.body)
   Pin.findById(pin)
-    .then((pinToUpdate) => {
-      res.json(pinToUpdate);
-      return pinToUpdate;
-    })
     .then(updatedPin => User.update({ _id: req.user._id, 'boards.title': board }, { $addToSet: { 'boards.$.pins': updatedPin._id } }))
-    .then(test => console.log(test))
+    .then(updateMessage => res.json(updateMessage))
     .catch(next);
   // find pin then update to user group
 });

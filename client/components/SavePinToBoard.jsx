@@ -17,13 +17,15 @@ class SavePinToBoard extends Component {
 
   handleSubmit() {
     axios.put(`/api/pin/${this.props.pin}`, { board: this.state.board })
-      .then(res => console.log(res.data))
+      .then((res) => {
+        console.log(res.data);
+      })
       .then(() => history.push(`/board/${this.state.boardIdForRedirect}`));
   }
 
   render() {
     const boards = this.props.user;
-    console.log(this.state)
+    console.log(this.state);
     return (
       <div className="form-save">
         <div className="control">
