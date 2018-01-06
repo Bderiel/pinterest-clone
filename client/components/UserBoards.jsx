@@ -29,7 +29,7 @@ class Boards extends Component {
           <Fragment /> }
           <div onClick={this.handleForm} className="board">
             <div className="board-button">
-              <img src="assets/add.svg" alt="Kiwi standing on oval" />
+              <img src="/assets/add.svg" alt="Kiwi standing on oval" />
             </div>
             <div className="center board-title">
               <p>Add Board</p>
