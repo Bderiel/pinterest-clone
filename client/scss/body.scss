@@ -5,8 +5,9 @@ h2 {
     color: red;
 }
 
-.app{
-    margin-top: 2%;
+.background{
+    background-color: #F2F2F2;
+    height: 100%;
 }
 
 .logo {
@@ -63,10 +64,17 @@ h2 {
 .single-content-photo{
   text-align: center;
   padding: 2em;
-  background-color: #F2F2F2;
+  background-color: white;
   border-radius: 1em 1em 1em 1em;
-  img{
-    border-radius: 10%;
+  width: 44%;
+  .item-photo{
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+      img{
+        border-radius: 8px;
+      }
   }
   .container{
       text-align: center;

@@ -26,11 +26,12 @@ class SinglePin extends Component {
   render() {
     const pin = this.props.pins.filter(el => el._id == this.props.match.params.pinId);
     return (
-      <div className="single-content-photo app center container">
+      <div className="background">  
+      <div className="single-content-photo center container">
         {this.state.form ? <SavePinToBoard pin={pin.length && pin[0]._id} close={this.handleForm} /> :
           <Fragment />
         }
-        <div className="item photo">
+        <div>
           {this.props.user.username ? <div className="button-position">
             <button onClick={this.handleForm} className="button is-success">Save</button>
           </div> :
@@ -39,15 +40,17 @@ class SinglePin extends Component {
           <div className="center">
             <p>{pin.length && pin[0].board}</p>
           </div>
-          <div>
+          <div className="item-photo">
             <img alt="pin could not load" src={pin.length && pin[0].image} />
           </div>
-          <div className="container">
+          <div>
             <p className="desc">{pin.length && pin[0].description}</p>
             <p>Uploaded by....</p>
           </div>
         </div>
-      </div>);
+      </div>
+      </div>
+      );
   }
 }
 
