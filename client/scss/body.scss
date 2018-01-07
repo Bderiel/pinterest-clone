@@ -67,6 +67,11 @@ h2 {
   background-color: white;
   border-radius: 1em 1em 1em 1em;
   width: 44%;
+  .single-pin-button{
+    left: 69%;
+    position: absolute;
+    margin-top: -6%;
+  }
   .item-photo{
     max-width: 90%;
     margin-left: auto;
@@ -75,9 +80,6 @@ h2 {
       img{
         border-radius: 8px;
       }
-  }
-  .container{
-      text-align: center;
   }
 }
 
@@ -198,4 +200,29 @@ h2 {
 .form-pin-input{
    margin: 3% 0% 0% 10%;
    width: 39%;
+}
+
+.back-button{
+    margin-top: 1%;
+    position: absolute;
+    margin-left: 1%;
+    cursor: pointer;
+    span{
+      position: relative;
+      top: -3px;
+    }
+}
+
+.form-pin-input-button{
+    div{
+        display: inline-block;
+        margin: 1%;
+    }
+}
+
+.tick{
+    margin-top: 10%;
+    img{
+        width: 50%;
+    }
 }

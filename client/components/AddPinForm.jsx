@@ -29,15 +29,16 @@ class AddPinForm extends Component {
         <hr />
         <div className="flex-container">
           <Dropzone className="dropzone" onDrop={this.handleDrop}>
-            {file.type ? <div>{file.name} Ready for upload</div> : <div>Drop in Photo or Click to Upload</div>}
+            {file.type ?
+              <div className="title">
+                Photo Ready for Upload!
+                <div className="tick center">
+                  <img src="/assets/tick.svg" alt="check" />
+                </div>
+              </div> :
+              <div className="title">Drop in Photo or Click to Upload</div>}
           </Dropzone>
           <div className="form-pin-input">
-            <div className="field">
-              <label className="label">Title</label>
-              <div className="control">
-                <input className="input" type="text" placeholder="Your Pin title" />
-              </div>
-            </div>
             <div className="field">
               <label className="label">Description</label>
               <div className="control">
@@ -55,8 +56,15 @@ class AddPinForm extends Component {
                 </div>
               </div>
             </div>
+            <div className="form-pin-input-button">
+              <div>
+                <button className="button">Submit</button>
+              </div>
+              <div>
+                <button className="button">Go Back</button>
+              </div>
+            </div>
           </div>
-          <hr />
         </div>
       </div>
     );
