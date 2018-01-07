@@ -18,7 +18,7 @@ class PinsInBoard extends Component {
       <div className="app container">
         <p className="board-header">{board.title && board.title.toUpperCase()}</p>
         <div className="grid">
-          <NewPinItem />
+          {this.props.user.name ? <NewPinItem /> : <Fragment />}
           {this.props.boards.title && pins.map(pin => (
             <MultiPinView key={pin._id} id={pin._id} image={pin.image} />
           ))}

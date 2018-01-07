@@ -25,6 +25,7 @@ router.post('/', (req, res, next) => { // creates a pin for logged in user
     tags: req.body.tags,
   });
 
+
   newPin.save()
     .then((savedPin) => {
       res.json(savedPin);
