@@ -4,12 +4,11 @@ const AWS = require('aws-sdk');
 
 const s3 = new AWS.S3();
 
-AWS.config.update(
-  {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-    subregion: 'us-east-1',
-  });
+AWS.config.update({
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  subregion: 'us-east-1',
+});
 
 
 const upload = multer({
@@ -23,7 +22,7 @@ router.post('/', upload.single('photo'), (req, res) => {
     Bucket: 'brian-pinterest-clone',
     Key: req.file.originalname,
     Body: req.file.buffer,
-    ACL: 'public-read', // your permisions
+    ACL: 'public-read', // permisions
   };
   s3.putObject(params, (err, data) => {
     if (err) {

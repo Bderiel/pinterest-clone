@@ -11,12 +11,8 @@ class Boards extends Component {
     };
     this.handleForm = this.handleForm.bind(this);
   }
-  componentWillUnmount() {
-    document.body.classList.remove('darken');
-  }
   handleForm(evt) {
     this.setState({ form: !this.state.form });
-    document.body.classList.toggle('darken');
   }
   render() {
     // const boards = this.props.user.boards;

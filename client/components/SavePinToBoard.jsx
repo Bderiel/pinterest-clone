@@ -25,11 +25,10 @@ class SavePinToBoard extends Component {
 
   render() {
     const boards = this.props.user;
-    console.log(this.state);
     return (
       <div className="form-save">
         <div className="control">
-          <label>Choose Board:  </label>
+          <label className="label">Choose Board:  </label>
           <div className="select">
             <select onChange={e => (this.setState({ board: boards.boards[e.target.value].title, boardIdForRedirect: boards.boards[e.target.value]._id }))}>
               <option disabled selected="true">Your Boards</option>

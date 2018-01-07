@@ -13,7 +13,8 @@ class NewBoardForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="modal is-active">
+        <div className="modal-background">
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -36,6 +37,7 @@ class NewBoardForm extends Component {
             <button className="button is-primary">Create</button>
           </div>
         </form>
+        </div>
       </div>
     );
   }
