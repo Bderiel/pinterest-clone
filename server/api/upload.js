@@ -8,8 +8,9 @@ const upload = multer({
 });
 
 router.post('/', upload.single('photo'), (req, res, next) => {
-  console.log(req.file, 'test');
-  res.send('hit');
+  console.log(process.env.amazons3, 'test');
+
+  res.send(process.env.amazons3);
 });
 
 module.exports = router;
