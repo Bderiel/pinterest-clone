@@ -28,11 +28,10 @@ router.post('/', (req, res, next) => { // creates a pin for logged in user
 
   newPin.save()
     .then((savedPin) => {
-      res.json(savedPin);
       return savedPin;
     }) // adds pins ref to user model
     .then(createdPin => User.update({ _id: createdPin.author, 'boards.title': board }, { $addToSet: { 'boards.$.pins': createdPin._id } }))
-    .then(test => console.log(test))
+    .then(success => res.json(success))
     .catch(next);
 });
 

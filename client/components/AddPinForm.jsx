@@ -2,25 +2,55 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Dropzone from 'react-dropzone';
 import axios from 'axios';
+import history from '../history';
 
 class AddPinForm extends Component {
   constructor() {
     super();
     this.state = {
       file: {},
+      board: '',
+      boardIdForRedirect: '',
+      description: '',
     };
     this.handleDrop = this.handleDrop.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
+    this.handleSumbit = this.handleSumbit.bind(this);
   }
   handleDrop(droppedFile) {
     this.setState({ file: droppedFile[0] });
+  }
+
+  handleChange(evt) {
+    this.setState({ description: evt.target.value });
+  }
+
+  handleSelect(evt) {
+    const boards = this.props.user; // need two handles or else got error but would still worked
+    this.setState({ board: boards.boards[evt.target.value].title, boardIdForRedirect: boards.boards[evt.target.value]._id });
+  }
+
+  handleSumbit() {
     const file = new FormData();
-    file.append('photo', droppedFile[0]);
+    file.append('photo', this.state.file);
+    const form = {
+      board: this.state.board,
+      description: this.state.description,
+    };
     axios.post('/api/upload', file)
-      .then(res => console.log(res.data));
+      .then(res => res.data)
+      .then((urlUpload) => {
+        form.image = urlUpload.url;
+        axios.post('/api/pin', form)
+          .then(res => console.log(res.data))
+          .then(() => history.push(`/board/${this.state.boardIdForRedirect}`));
+      });
   }
   render() {
     const { file } = this.state;
     const boards = this.props.user;
+    console.log(this.state);
     return (
       <div className="form-pin">
         <div className="form-pin-title center">
@@ -42,12 +72,12 @@ class AddPinForm extends Component {
             <div className="field">
               <label className="label">Description</label>
               <div className="control">
-                <textarea className="textarea" placeholder="Description of your pin" />
+                <textarea onChange={this.handleChange} name="description" className="textarea" placeholder="Description of your pin" />
               </div>
               <div className="control">
                 <label className="label">Choose Board:  </label>
                 <div className="select">
-                  <select onChange={e => (this.setState({ board: boards.boards[e.target.value].title, boardIdForRedirect: boards.boards[e.target.value]._id }))}>
+                  <select onChange={this.handleSelect}>
                     <option disabled selected="true">Your Boards</option>
                     {boards.name && boards.boards.map((board, idx) => (
                       <option key={board.title} value={idx}>{board.title}</option>
@@ -58,7 +88,7 @@ class AddPinForm extends Component {
             </div>
             <div className="form-pin-input-button">
               <div>
-                <button className="button">Submit</button>
+                <button onClick={this.handleSumbit} className="button">Submit</button>
               </div>
               <div>
                 <button className="button">Go Back</button>
