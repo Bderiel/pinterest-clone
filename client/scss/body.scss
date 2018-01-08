@@ -14,8 +14,7 @@ h2 {
   padding-top: 0.4em;
   margin-top: 12%;
   margin-left: 11%;
-  height: 2.5em;
-  width: 2.5em;
+  width: 100%;
 }
 
 .center{
@@ -46,15 +45,16 @@ h2 {
 }
 
 .content-photo{
-    border-radius: 10%;
+    border-radius: 8px;
     background-color: #F2F2F2;
     display: inline-block;
     margin: 0 0 1em;
     img{
-    border-radius: 10%;
+    border-radius: 8px;
     max-width: 95%;
     max-height: 95%;
     margin-top: 2%;
+    margin-bottom: 2%;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -160,10 +160,6 @@ h2 {
     height:16em;
 }
 
-// .dropzone{
-//     width: 
-// }
-
 .form-pin{
   background-color: goldenrod;
   position: absolute;
@@ -224,5 +220,11 @@ h2 {
     margin-top: 10%;
     img{
         width: 50%;
+    }
+}
+
+.navbar-menu{
+    a{
+        color: black;
     }
 }
