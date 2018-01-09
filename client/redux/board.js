@@ -15,6 +15,7 @@ const GET_USER_BOARD = 'GET_USER_BOARD';
 const getBoardsItem = boardsPins => ({ type: GET_BOARD_ITEMS, boardsPins });
 const getUserBoard = boards => ({ type: GET_USER_BOARD, boards });
 
+
 const intialState = {
   boardPins: [],
   userBoards: {},

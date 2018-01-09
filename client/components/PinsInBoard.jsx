@@ -12,11 +12,20 @@ class PinsInBoard extends Component {
     super();
     this.state = {
       form: false,
+      params: '',
     };
     this.handleForm = this.handleForm.bind(this);
   }
   componentDidMount() {
+    this.setState({ params: this.props.match.params.boardId });
     this.props.SingleBoardThunk(this.props.match.params.boardId);
+  }
+
+
+  componentWillReceiveProps() {
+    if (this.props.match.params.boardId !== this.state.params) {
+      this.props.SingleBoardThunk(this.props.match.params.boardId);
+    }
   }
 
   handleForm(evt) {

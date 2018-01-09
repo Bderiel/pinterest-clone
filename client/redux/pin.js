@@ -42,7 +42,10 @@ export const addPinThunk = (photo, form, redirect) =>
       .then((urlUpload) => {
         form.image = urlUpload.url;
         axios.post('/api/pin', form)
-          .then(res => dispatch(addPin(res.data.pin))) // dispatch this
+          .then((res) => {
+            res.data.pin.author = { username: res.data.user };
+            return dispatch(addPin(res.data.pin)); // dispatch this
+          })
           .then(() => history.push(`/board/${redirect}`));
       })
       .catch(err => console.log(err));

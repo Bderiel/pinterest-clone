@@ -1,5 +1,5 @@
-# MERN-BONES
-Pinterest Clone Built in MERN STACK 
+# Pinterest Clone Built in MERN STACK 
+ 
 
 ## USER STORIES
 * A user upload a pin 

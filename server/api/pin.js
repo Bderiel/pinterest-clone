@@ -12,6 +12,7 @@ router.get('/:userId', (req, res, next) => { // find pin by user;
 
 router.get('/', (req, res, next) => { // finds all pins for homepage
   Pin.find()
+    .populate({ path: 'author', select: 'username' })
     .then(pinsForUser => res.json(pinsForUser))
     .catch(next);
 });
@@ -35,6 +36,7 @@ router.post('/', (req, res, next) => { // creates a pin for logged in user
     .then(createdPin => User.update({ _id: createdPin.author, 'boards.title': board }, { $addToSet: { 'boards.$.pins': createdPin._id } }))
     .then((success) => {
       success.pin = dataToSend;
+      success.user = req.user.username;
       res.json(success);
     })
     .catch(next);

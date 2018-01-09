@@ -20,11 +20,10 @@ class SearchUser extends Component {
     this.setState({ user: '' });
   }
   render() {
-    console.log(this.state)
     return (
       <form className="field is-grouped">
         <p className="control is-expanded">
-          <input value={this.state.user} onChange={e => (this.setState({ user: e.target.value }))} className="input" type="text" placeholder="Find a repository" />
+          <input value={this.state.user} onChange={e => (this.setState({ user: e.target.value }))} className="input" type="text" placeholder="Find a User" />
         </p>
         <p className="control">
           <button onClick={this.handleClick} className="button is-info">

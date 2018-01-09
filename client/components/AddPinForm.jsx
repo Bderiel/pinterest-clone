@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Dropzone from 'react-dropzone';
-import { addPinThunk } from '../redux';
+import { addPinThunk, SingleBoardThunk } from '../redux';
 
 class AddPinForm extends Component {
   constructor() {
@@ -38,7 +38,9 @@ class AddPinForm extends Component {
       description: this.state.description,
     };
 
+    // this.props.SingleBoardThunk(this.state.boardIdForRedirect);
     this.props.addPinThunk(file, form, this.state.boardIdForRedirect);
+    this.props.close();
   }
   render() {
     const { file } = this.state;
@@ -98,5 +100,5 @@ class AddPinForm extends Component {
 }
 
 const mapState = ({ user }) => ({ user });
-const mapDispatch = { addPinThunk };
+const mapDispatch = { addPinThunk, SingleBoardThunk };
 export default connect(mapState, mapDispatch)(AddPinForm);
