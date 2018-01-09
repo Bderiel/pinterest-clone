@@ -1,4 +1,5 @@
 import axios from 'axios';
+import history from '../history';
 
 /**
  * ACTION TYPES
@@ -6,7 +7,7 @@ import axios from 'axios';
 const GET_PINS = 'GET_PINS';
 const GET_USER_PINS = 'GET_USER_PINS';
 const REMOVE_PIN = 'REMOVE_PIN';
-const SAVE_PIN = 'SAVE_PIN';
+const ADD_PIN = 'ADD_PIN';
 
 /**
  * INITIAL STATE
@@ -21,6 +22,8 @@ const SAVE_PIN = 'SAVE_PIN';
  */
 const getPins = pins => ({ type: GET_PINS, pins });
 const getPinByUser = userPins => ({ type: GET_USER_PINS, userPins });
+const addPin = pin => ({ type: ADD_PIN, pin });
+
 
 /**
  * THUNK CREATORS
@@ -30,6 +33,18 @@ export const pinsThunk = () =>
     axios.get('/api/pin')
       .then(res =>
         dispatch(getPins(res.data)))
+      .catch(err => console.log(err));
+
+export const addPinThunk = (photo, form, redirect) =>
+  dispatch =>
+    axios.post('/api/upload', photo)
+      .then(res => res.data)
+      .then((urlUpload) => {
+        form.image = urlUpload.url;
+        axios.post('/api/pin', form)
+          .then(res => dispatch(addPin(res.data.pin))) // dispatch this
+          .then(() => history.push(`/board/${redirect}`));
+      })
       .catch(err => console.log(err));
 
 export const pinByUserThunk = username =>
@@ -45,6 +60,8 @@ export default function (state = [], action) {
       return action.pins;
     case GET_USER_PINS:
       return action.userPins;
+    case ADD_PIN:
+      return [...state, action.pin];
     default:
       return state;
   }

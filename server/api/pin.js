@@ -18,6 +18,7 @@ router.get('/', (req, res, next) => { // finds all pins for homepage
 
 router.post('/', (req, res, next) => { // creates a pin for logged in user
   const board = req.body.board;
+  let dataToSend;
   const newPin = new Pin({
     image: req.body.image,
     description: req.body.description,
@@ -28,10 +29,14 @@ router.post('/', (req, res, next) => { // creates a pin for logged in user
 
   newPin.save()
     .then((savedPin) => {
+      dataToSend = savedPin;
       return savedPin;
     }) // adds pins ref to user model
     .then(createdPin => User.update({ _id: createdPin.author, 'boards.title': board }, { $addToSet: { 'boards.$.pins': createdPin._id } }))
-    .then(success => res.json(success))
+    .then((success) => {
+      success.pin = dataToSend;
+      res.json(success);
+    })
     .catch(next);
 });
 

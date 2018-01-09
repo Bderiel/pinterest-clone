@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Dropzone from 'react-dropzone';
-import axios from 'axios';
-import history from '../history';
+import { addPinThunk } from '../redux';
 
 class AddPinForm extends Component {
   constructor() {
@@ -38,19 +37,12 @@ class AddPinForm extends Component {
       board: this.state.board,
       description: this.state.description,
     };
-    axios.post('/api/upload', file)
-      .then(res => res.data)
-      .then((urlUpload) => {
-        form.image = urlUpload.url;
-        axios.post('/api/pin', form)
-          .then(res => console.log(res.data))
-          .then(() => history.push(`/board/${this.state.boardIdForRedirect}`));
-      });
+
+    this.props.addPinThunk(file, form, this.state.boardIdForRedirect);
   }
   render() {
     const { file } = this.state;
     const boards = this.props.user;
-    console.log(this.state);
     return (
       <div className="form-pin">
         <div className="form-pin-title center">
@@ -102,5 +94,5 @@ class AddPinForm extends Component {
 }
 
 const mapState = ({ user }) => ({ user });
-const mapDispatch = {};
+const mapDispatch = { addPinThunk};
 export default connect(mapState, mapDispatch)(AddPinForm);
