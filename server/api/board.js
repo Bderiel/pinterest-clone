@@ -37,7 +37,7 @@ router.get('/pin/:boardId', (req, res, next) => {
 router.get('/:user', (req, res, next) => {
   const { user } = req.params;
   User.findOne({ username: user })
-    .then(foundUser => res.json(foundUser.boards))
+    .then(foundUser => res.json({ boards: foundUser.boards, user: foundUser.username }))
     .catch(next);
 });
 

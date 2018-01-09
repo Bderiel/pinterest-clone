@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import SeachUser from './SearchUser';
 
 class NavBar extends Component {
   constructor() {
@@ -22,9 +23,7 @@ class NavBar extends Component {
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <NavLink to="/"><img className="logo navbar-item" src="/assets/logo.svg" alt="logo" /></NavLink>
-          <div className="navbar-item">
-            <input className="input" type="text" placeholder=" Make own Compon Search by UserName/description/tags" />
-          </div>
+          <SeachUser />
           <button onClick={this.handleClick} className="button is-black navbar-burger">
             <span />
             <span />
@@ -34,7 +33,7 @@ class NavBar extends Component {
         <div className={`navbar-menu ${this.state.hamburger}`}>
           <NavLink className="navbar-item" to="/">Home</NavLink>
           {this.props.user.email ?
-            <NavLink to="/myboards" className="navbar-item">
+            <NavLink to={`/profile/${this.props.user.username}`} className="navbar-item">
               {this.props.user.username}
             </NavLink>
             :

@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import BoardItem from './BoardItem';
 import NewBoardForm from './NewBoardForm';
+import { UserBoardsThunk } from '../redux';
 
 class Boards extends Component {
   constructor() {
@@ -11,35 +12,41 @@ class Boards extends Component {
     };
     this.handleForm = this.handleForm.bind(this);
   }
+  componentDidMount() {
+    // fetch pins
+    this.props.UserBoardsThunk(this.props.match.params.user);
+  }
+
   handleForm(evt) {
     this.setState({ form: !this.state.form });
   }
   render() {
-    // const boards = this.props.user.boards;
-    // console.log(boards)
+    const boardOwner = this.props.boards.userBoards.user;
+    const { boards } = this.props.boards.userBoards;
+    const loggedUser = this.props.user.username;
     return (
       <div className="container">
-        <h1>{this.props.user.username}'s Boards</h1>
+        <h1>{boardOwner}'s Boards</h1>
         <div className="flex-container">
           {this.state.form ? <NewBoardForm close={this.handleForm} /> :
-          <Fragment /> }
-          <div onClick={this.handleForm} className="board">
+            <Fragment />}
+          {boardOwner === loggedUser ? <div onClick={this.handleForm} className="board">
             <div className="board-button">
-              <img src="/assets/add.svg" alt="Kiwi standing on oval" />
+              <img src="/assets/add.svg" alt="add board" />
             </div>
             <div className="center board-title">
               <p>Add Board</p>
             </div>
-          </div>
-          {this.props.user.name && this.props.user.boards.map(board => (
+          </div> : <Fragment />}
+          {boardOwner && boards.map(board => (
             <BoardItem id={board._id} title={board.title} />
-         ))}
+          ))}
         </div>
       </div>
     );
   }
 }
 
-const mapState = ({ user }) => ({ user });
-const mapDispatch = {};
+const mapState = ({ user, boards }) => ({ user, boards });
+const mapDispatch = { UserBoardsThunk };
 export default connect(mapState, mapDispatch)(Boards);

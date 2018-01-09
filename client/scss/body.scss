@@ -4,12 +4,9 @@ $grey: #F2F2F2;
 html, body, #app{
   height: 100%
 }
-h2 {
-    color: red;
-}
 
 .background{
-    background-color: #F2F2F2;
+    background-color: $grey;
     height: 100%;
 }
 
@@ -62,7 +59,7 @@ h2 {
 
 .content-photo{
     border-radius: 8px;
-    background-color: #F2F2F2;
+    background-color: $grey;
     display: inline-block;
     margin: 0 0 1em;
     img{
@@ -106,7 +103,7 @@ h2 {
 }
 
 .board-title{
-    background-color: #F2F2F2;
+    background-color: $grey;
     margin-top: 3%;
     margin-left: 3%;
     border-radius: 3%;
@@ -117,8 +114,9 @@ h2 {
 }
 .board-button{
   text-align: center;
-  background-color: #F2F2F2;
+  background-color: $grey;
   border-radius: 1em 1em 1em 1em;
+  height: 100%;
     img{
   height: 25%;
   width: 25%;
@@ -172,7 +170,7 @@ h2 {
 
 
 .form-pin{
-  background-color: goldenrod;
+  background-color: wheat;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -197,7 +195,7 @@ h2 {
 }
 
 .dropzone{
-    background-color: azure;
+    background-color: $grey;
     height: 70%;
     width: 30%;
     margin: 3% 0% 0% 10%;
@@ -236,4 +234,8 @@ h2 {
 
 .navbar-menu{
     background-color: black;
+}
+
+.search-icon{
+    color: red;
 }
