@@ -1,3 +1,6 @@
+$grey: #F2F2F2;
+
+
 html, body, #app{
   height: 100%
 }
@@ -29,8 +32,10 @@ h2 {
 }
 
 .grid {
-  column-count: 4; 
+  column-count: 5; 
   column-gap: 1em;
+  margin-top: 2%;
+  height: 100%;
 //   fix to real grid
 }
 
@@ -42,6 +47,17 @@ h2 {
   a{
     text-decoration: none;
    }
+}
+
+.new-pin{
+    height: 150px;
+    width: 150px;
+    background-color: $grey;
+    text-align: center;
+    img{
+        margin-top: 30%;
+        width: 40%;
+    }
 }
 
 .content-photo{
@@ -100,8 +116,6 @@ h2 {
     margin: 5%;
 }
 .board-button{
-  height: 125%;
-  width: 103%;
   text-align: center;
   background-color: #F2F2F2;
   border-radius: 1em 1em 1em 1em;
@@ -156,9 +170,6 @@ h2 {
     
 }
 
-.new-pin{
-    height:16em;
-}
 
 .form-pin{
   background-color: goldenrod;

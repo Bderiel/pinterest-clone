@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { SingleBoardThunk } from '../redux';
 import MultiPinView from './MultiPinView';
-import NewPinItem from './NewPinItem';
 
 
 class PinsInBoard extends Component {
@@ -18,7 +17,10 @@ class PinsInBoard extends Component {
       <div className="app container">
         <p className="board-header">{board.title && board.title.toUpperCase()}</p>
         <div className="grid">
-          {this.props.user.name ? <NewPinItem /> : <Fragment />}
+          {this.props.user.name ?
+            <div className="new-pin">
+              <img src="/assets/add.svg" alt="add pin" />
+            </div> : <Fragment />}
           {this.props.boards.title && pins.map(pin => (
             <MultiPinView key={pin._id} id={pin._id} image={pin.image} />
           ))}

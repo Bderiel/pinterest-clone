@@ -1,13 +1,15 @@
 # MERN-BONES
-A MERN stack boilerplate. 
+Pinterest Clone Built in MERN STACK 
 
-## Features
-* React setup with redux store
-* Express server 
-* Mongodb setup with User auth model
-* auth support login/logout/signup with encypted passwords
+## USER STORIES
+* A user upload a pin 
+* A user can create new boards
+* A user can add other's pin to their board
+* A user can view a Pin
+* A user can search for Pins and Boards By Username
 
-## To Add
-* working Login on the frontend
-* Google Oath
-* Heroku Deployment Script 
+
+## STRECH GOALS
+* Twitter Oath
+* Mobile Responsive
+* Polish
