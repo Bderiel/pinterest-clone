@@ -1,6 +1,10 @@
 $grey: #F2F2F2;
 
-
+.board-buttons{
+    display: inline-flex;
+    margin-left: 11%;
+    margin-top: 1%;
+}
 html, body, #app{
   height: 100%
 }
@@ -133,7 +137,7 @@ html, body, #app{
    border-radius: 8px;   
    transform: translate(60%, 0);
    position: absolute;
-   background-color: wheat;
+   background-color: $grey;
 
 }
 .form-board {
@@ -143,7 +147,7 @@ html, body, #app{
     left: 50%;
     transform: translate(-50%, 0);
     margin-top: 17%;
-    background-color: wheat;
+    background-color: $grey;
     border-radius: 8px;   
     border: black solid 1px;
     position: absolute;

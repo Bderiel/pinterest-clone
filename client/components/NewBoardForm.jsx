@@ -19,6 +19,7 @@ class NewBoardForm extends Component {
             onSubmit={(e) => {
               e.preventDefault();
               this.props.CreateBoardThunk(this.state);
+              this.props.close();
             }}
             className="field form-board"
           >
@@ -31,11 +32,13 @@ class NewBoardForm extends Component {
             <div className="control">
               <input onChange={e => (this.setState({ description: e.target.value }))} className="input" name="escription" type="text" placeholder="ex Hire Brian" />
             </div>
-            <div className="control">
+            <div className="board-buttons">
+            <div className="control test">
               <button onClick={() => (this.props.close())} className="button is-danger">Close</button>
             </div>
-            <div className="control">
-              <button className="button is-primary">Create</button>
+            <div className="control test">
+              <button type="submit" className="button is-primary">Create</button>
+            </div>
             </div>
           </form>
         </div>
