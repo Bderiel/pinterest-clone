@@ -137,7 +137,7 @@ html, body, #app{
    border-radius: 8px;   
    transform: translate(60%, 0);
    position: absolute;
-   background-color: wheat;
+   background-color: $grey;
 
 }
 .form-board {
@@ -147,7 +147,7 @@ html, body, #app{
     left: 50%;
     transform: translate(-50%, 0);
     margin-top: 17%;
-    background-color: wheat;
+    background-color: $grey;
     border-radius: 8px;   
     border: black solid 1px;
     position: absolute;

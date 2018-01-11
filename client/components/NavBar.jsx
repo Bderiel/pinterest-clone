@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import SeachUser from './SearchUser';
+import { logout } from '../redux';
 
 class NavBar extends Component {
   constructor() {
@@ -32,10 +33,15 @@ class NavBar extends Component {
         </div>
         <div className={`navbar-menu ${this.state.hamburger}`}>
           <NavLink className="navbar-item" to="/">Home</NavLink>
-          {this.props.user.email ?
-            <NavLink to={`/profile/${this.props.user.username}`} className="navbar-item">
-              {this.props.user.username}
-            </NavLink>
+          {this.props.user.username ?
+            <Fragment>
+              <NavLink to={`/profile/${this.props.user.username}`} className="navbar-item">
+                {this.props.user.username}
+              </NavLink>
+              <a onClick={() => (this.props.logout())} className="navbar-item" href="#">
+                Sign Out
+              </a>
+            </Fragment>
             :
             <Fragment>
               <NavLink to="/login" className="navbar-item">
@@ -53,5 +59,5 @@ class NavBar extends Component {
 }
 
 const mapState = ({ user }) => ({ user });
-const mapDispatch = {};
+const mapDispatch = { logout };
 export default connect(mapState, mapDispatch)(NavBar);

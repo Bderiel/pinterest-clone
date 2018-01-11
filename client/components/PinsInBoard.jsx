@@ -16,28 +16,16 @@ class PinsInBoard extends Component {
     this.handleForm = this.handleForm.bind(this);
   }
   componentDidMount() {
-    // this.setState({ params: this.props.match.params.boardId });
-    this.state = {
-      params: this.props.match.params.boardId,
-    };
     this.props.SingleBoardThunk(this.props.match.params.boardId);
   }
 
-
-  // componentWillReceiveProps(newProps) {
-  //   if (newProps.match.params.boardId !== this.state.params) {
-  //     this.props.SingleBoardThunk(this.props.match.params.boardId);
-  //     this.setState({ params: this.props.match.params.boardId });
-  //   }
-  //}
-
-  handleForm(evt) {
+  handleForm() {
     this.setState({ form: !this.state.form });
   }
+
   render() {
     const pins = this.props.boards.boardPins;
     const board = this.props.boards;
-    console.log(this.state)
     return (
       <div className="app container">
         <NavLink to="/board/5a49bf2dd10550dd3a4da92d" >Test1</NavLink>
