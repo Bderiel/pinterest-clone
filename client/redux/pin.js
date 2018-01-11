@@ -1,5 +1,6 @@
 import axios from 'axios';
 import history from '../history';
+import { SingleBoardThunk } from './index';
 
 /**
  * ACTION TYPES
@@ -46,6 +47,7 @@ export const addPinThunk = (photo, form, redirect) =>
             res.data.pin.author = { username: res.data.user };
             return dispatch(addPin(res.data.pin)); // dispatch this
           })
+          .then(() => dispatch(SingleBoardThunk(redirect)))
           .then(() => history.push(`/board/${redirect}`));
       })
       .catch(err => console.log(err));

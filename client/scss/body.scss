@@ -1,6 +1,10 @@
 $grey: #F2F2F2;
 
-
+.board-buttons{
+    display: inline-flex;
+    margin-left: 11%;
+    margin-top: 1%;
+}
 html, body, #app{
   height: 100%
 }

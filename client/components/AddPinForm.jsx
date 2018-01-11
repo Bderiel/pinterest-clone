@@ -38,7 +38,6 @@ class AddPinForm extends Component {
       description: this.state.description,
     };
 
-    // this.props.SingleBoardThunk(this.state.boardIdForRedirect);
     this.props.addPinThunk(file, form, this.state.boardIdForRedirect);
     this.props.close();
   }
@@ -59,8 +58,8 @@ class AddPinForm extends Component {
                   <div className="title">
                     Photo Ready for Upload!
                 <div className="tick center">
-                      <img src="/assets/tick.svg" alt="check" />
-                    </div>
+                  <img src="/assets/tick.svg" alt="check" />
+                </div>
                   </div> :
                   <div className="title">Drop in Photo or Click to Upload</div>}
               </Dropzone>

@@ -24,12 +24,12 @@ class PinsInBoard extends Component {
   }
 
 
-  componentWillReceiveProps(newProps) {
-    if (newProps.match.params.boardId !== this.state.params) {
-      this.props.SingleBoardThunk(this.props.match.params.boardId);
-      this.setState({ params: this.props.match.params.boardId });
-    }
-  }
+  // componentWillReceiveProps(newProps) {
+  //   if (newProps.match.params.boardId !== this.state.params) {
+  //     this.props.SingleBoardThunk(this.props.match.params.boardId);
+  //     this.setState({ params: this.props.match.params.boardId });
+  //   }
+  //}
 
   handleForm(evt) {
     this.setState({ form: !this.state.form });
