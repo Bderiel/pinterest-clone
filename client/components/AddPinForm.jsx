@@ -74,7 +74,7 @@ class AddPinForm extends Component {
                     <div className="select">
                       <select onChange={this.handleSelect}>
                         <option disabled selected="true">Your Boards</option>
-                        {boards.name && boards.boards.map((board, idx) => (
+                        {boards.username && boards.boards.map((board, idx) => (
                           <option key={board.title} value={idx}>{board.title}</option>
                         ))}
                       </select>

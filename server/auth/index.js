@@ -6,7 +6,7 @@ router.post('/signup', (req, res, next) => {
   newUser.password = newUser.generateHash(req.body.password);
   newUser.save()
     .then((createdUser) => {
-      req.login(createdUser, err => (err ? next(err) : res.json({ username: createdUser.username })));
+      req.login(createdUser, err => (err ? next(err) : res.json({ username: createdUser.username, boards: createdUser.boards })));
     })
     .catch((err) => {
       if (err.name === 'ValidationError') res.status(401).send('User already exists');
@@ -24,7 +24,7 @@ router.post('/login', (req, res, next) => {
       } else if (!user.validPassword(req.body.password)) {
         res.status(401).send('Incorrect password');
       } else {
-        req.login(user, err => (err ? next(err) : res.json({ username: user.username })));
+        req.login(user, err => (err ? next(err) : res.json({ username: user.username, boards: user.boards })));
       }
     })
     .catch(next);
@@ -37,7 +37,7 @@ router.post('/logout', (req, res) => {
 
 
 router.get('/me', (req, res) => {
-  res.json({ username: req.user.username });
+  res.json({ username: req.user.username, boards: req.user.boards});
 });
 
 module.exports = router;

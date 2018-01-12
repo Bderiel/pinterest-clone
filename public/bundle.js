@@ -5802,7 +5802,7 @@ class AddPinForm extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                         { disabled: true, selected: 'true' },
                         'Your Boards'
                       ),
-                      boards.name && boards.boards.map((board, idx) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                      boards.username && boards.boards.map((board, idx) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'option',
                         { key: board.title, value: idx },
                         board.title
