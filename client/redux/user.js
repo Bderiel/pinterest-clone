@@ -5,7 +5,7 @@ import history from '../history';
  */
 const GET_USER = 'GET_USER';
 const REMOVE_USER = 'REMOVE_USER';
-const NEW_BOARD = 'NEW_BOARD'
+const NEW_BOARD = 'NEW_BOARD';
 
 /**
  * INITIAL STATE
@@ -18,7 +18,6 @@ const defaultUser = {};
 const getUser = user => ({ type: GET_USER, user });
 const removeUser = () => ({ type: REMOVE_USER });
 const newBoard = user => ({ type: NEW_BOARD, user });
-
 
 /**
  * THUNK CREATORS
@@ -33,8 +32,11 @@ export const me = () =>
 export const CreateBoardThunk = board =>
   dispatch =>
     axios.post('/api/board/', board)
-      .then(res =>
-        dispatch(newBoard(res.data)))
+      .then((res) => {
+        const redirect = res.data.boards[res.data.boards.length-1]._id
+        dispatch(newBoard(res.data));
+        history.push(`/board/${redirect}`);
+      })
       .catch(err => console.log(err));
 
 export const auth = (email, password, method) =>
