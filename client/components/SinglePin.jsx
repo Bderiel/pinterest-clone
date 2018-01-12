@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import SavePinToBoard from './SavePinToBoard';
 import BackButton from './BackButton';
-import { logout } from '../redux'; // save and add to colletion
 
 class SinglePin extends Component {
   constructor() {
@@ -15,13 +14,8 @@ class SinglePin extends Component {
     this.handleForm = this.handleForm.bind(this);
   }
 
-  componentWillUnmount() {
-    document.body.classList.remove('darken');
-  }
-
   handleForm(evt) {
     this.setState({ form: !this.state.form });
-    document.body.classList.toggle('darken');
   }
 
   render() {
@@ -36,8 +30,7 @@ class SinglePin extends Component {
           <div>
             {this.props.user.username ?
               <div className="single-pin-button">
-                <button className="button">Share</button>
-                <button onClick={this.handleForm} className="button is-success">Save</button>
+                <button onClick={this.handleForm} className="button is-pin-red">Save</button>
               </div> :
               <Fragment />
             }
