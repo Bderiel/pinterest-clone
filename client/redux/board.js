@@ -17,7 +17,7 @@ const getUserBoard = boards => ({ type: GET_USER_BOARD, boards });
 
 
 const intialState = {
-  boardPins: [],
+  boardPins: {},
   userBoards: {},
 };
 /**
@@ -44,7 +44,7 @@ export const UserBoardsThunk = username =>
 export default function (state = intialState, action) {
   switch (action.type) {
     case GET_BOARD_ITEMS:
-      return Object.assign({}, state, { boardPins: action.boardsPins.pins });
+      return Object.assign({}, state, { boardPins: action.boardsPins });
     case GET_USER_BOARD:
       return Object.assign({}, state, { userBoards: action.boards });
     default:

@@ -25,13 +25,14 @@ class PinsInBoard extends Component {
   }
 
   render() {
-    const pins = this.props.boards.boardPins;
+    const pins = this.props.boards.boardPins.pins;
     const board = this.props.boards;
     return (
       <div className="app container">
-        <h1 className="board-header">{board.title && board.title.toUpperCase()}Filler</h1>
+        <h1 className="title">{board.boardPins.title && board.boardPins.title.toUpperCase()}</h1>
+        <h2 className="subtitle">{board.boardPins.title && board.boardPins.description}</h2>
         <ResponsiveMasonry
-          columnsCountBreakPoints={{ 350: 2, 750: 3, 900: 4 }}
+          columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
         >
           <Masonry>
             {this.props.user.username ?
@@ -40,7 +41,7 @@ class PinsInBoard extends Component {
               </div> : <Fragment />}
             {this.state.form ? <AddPinForm close={this.handleForm} /> :
             <Fragment />}
-            {pins.length && pins.map(pin => (
+            {board.boardPins.title && pins.map(pin => (
               <MultiPinView key={pin._id} id={pin._id} title={pin.description} image={pin.image} />
             ))}
           </Masonry>
