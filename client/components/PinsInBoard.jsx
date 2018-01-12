@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import { SingleBoardThunk } from '../redux';
 import MultiPinView from './MultiPinView';
 import AddPinForm from './AddPinForm';
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
+
 
 
 class PinsInBoard extends Component {
@@ -28,21 +30,22 @@ class PinsInBoard extends Component {
     const board = this.props.boards;
     return (
       <div className="app container">
-        <NavLink to="/board/5a49bf2dd10550dd3a4da92d" >Test1</NavLink>
-          <NavLink to="/board/5a4c7d40d8bc1d165504b18f" >Test2</NavLink >
-        <h1>{this.props.match.params.boardId}</h1>
-        {this.state.form ? <AddPinForm close={this.handleForm} /> :
-        <Fragment />}
-        <p className="board-header">{board.title && board.title.toUpperCase()}</p>
-        <div className="grid">
-          {this.props.user.name ?
-            <div onClick={this.handleForm} className="new-pin">
-              <img src="/assets/add.svg" alt="add pin" />
-            </div> : <Fragment />}
-          {pins.length && pins.map(pin => (
-            <MultiPinView key={pin._id} id={pin._id} image={pin.image} />
-          ))}
-        </div>
+        <h1 className="board-header">{board.title && board.title.toUpperCase()}Filler</h1>
+        <ResponsiveMasonry
+          columnsCountBreakPoints={{ 350: 2, 750: 3, 900: 4 }}
+        >
+          <Masonry>
+            {this.state.form ? <AddPinForm close={this.handleForm} /> :
+              <Fragment />}
+            {this.props.user.name ?
+              <div onClick={this.handleForm} className="new-pin">
+                <img src="/assets/add.svg" alt="add pin" />
+              </div> : <Fragment />}
+            {pins.length && pins.map(pin => (
+              <MultiPinView key={pin._id} id={pin._id} title={pin.description} image={pin.image} />
+            ))}
+          </Masonry>
+        </ResponsiveMasonry>
       </div>
     );
   }
