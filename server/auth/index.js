@@ -6,7 +6,7 @@ router.post('/signup', (req, res, next) => {
   newUser.password = newUser.generateHash(req.body.password);
   newUser.save()
     .then((createdUser) => {
-      req.login(createdUser, err => (err ? next(err) : res.json(createdUser)));
+      req.login(createdUser, err => (err ? next(err) : res.json({ username: createdUser.username })));
     })
     .catch((err) => {
       console.log(err.name);
@@ -25,7 +25,7 @@ router.post('/login', (req, res, next) => {
       } else if (!user.validPassword(req.body.password)) {
         res.status(401).send('Incorrect password');
       } else {
-        req.login(user, err => (err ? next(err) : res.json(user)));
+        req.login(user, err => (err ? next(err) : res.json({ username: user.username })));
       }
     })
     .catch(next);
@@ -38,7 +38,7 @@ router.post('/logout', (req, res) => {
 
 
 router.get('/me', (req, res) => {
-  res.json(req.user);
+  res.json({ username: req.user.username });
 });
 
 module.exports = router;
