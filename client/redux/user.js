@@ -39,9 +39,9 @@ export const CreateBoardThunk = board =>
       })
       .catch(err => console.log(err));
 
-export const auth = (email, password, method) =>
+export const auth = (formData, method) =>
   dispatch =>
-    axios.post(`/auth/${method}`, { email, password })
+    axios.post(`/auth/${method}`, formData)
       .then((res) => {
         dispatch(getUser(res.data));
       })

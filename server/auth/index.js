@@ -9,7 +9,6 @@ router.post('/signup', (req, res, next) => {
       req.login(createdUser, err => (err ? next(err) : res.json({ username: createdUser.username })));
     })
     .catch((err) => {
-      console.log(err.name);
       if (err.name === 'ValidationError') res.status(401).send('User already exists');
       else {
         next(err);
