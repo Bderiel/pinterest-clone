@@ -7,10 +7,11 @@ import pins from './pin';
 import boards from './board';
 
 const reducer = combineReducers({ boards, user, pins });
-const middleware = composeWithDevTools(applyMiddleware(
-  thunkMiddleware,
-  createLogger({ collapsed: true }),
-));
+// const middleware = composeWithDevTools(applyMiddleware(
+//   thunkMiddleware,
+//   createLogger({ collapsed: true }),
+// ));
+const middleware = applyMiddleware(thunkMiddleware);
 const store = createStore(reducer, middleware);
 
 export default store;

@@ -480,7 +480,11 @@ module.exports = invariant;
 
 
 const reducer = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["combineReducers"])({ boards: __WEBPACK_IMPORTED_MODULE_6__board__["c" /* default */], user: __WEBPACK_IMPORTED_MODULE_4__user__["c" /* default */], pins: __WEBPACK_IMPORTED_MODULE_5__pin__["b" /* default */] });
-const middleware = Object(__WEBPACK_IMPORTED_MODULE_3_redux_devtools_extension__["composeWithDevTools"])(Object(__WEBPACK_IMPORTED_MODULE_0_redux__["applyMiddleware"])(__WEBPACK_IMPORTED_MODULE_2_redux_thunk___default.a, Object(__WEBPACK_IMPORTED_MODULE_1_redux_logger__["createLogger"])({ collapsed: true })));
+// const middleware = composeWithDevTools(applyMiddleware(
+//   thunkMiddleware,
+//   createLogger({ collapsed: true }),
+// ));
+const middleware = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["applyMiddleware"])(__WEBPACK_IMPORTED_MODULE_2_redux_thunk___default.a);
 const store = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["createStore"])(reducer, middleware);
 
 /* harmony default export */ __webpack_exports__["f"] = (store);
