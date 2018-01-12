@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import axios from 'axios'; // not changing state nvm
+import axios from 'axios'; // not changing state
 import history from '../history';
+import { SingleBoardThunk } from '../redux';
 
 
 class SavePinToBoard extends Component {
@@ -20,7 +21,9 @@ class SavePinToBoard extends Component {
       .then((res) => {
         console.log(res.data);
       })
-      .then(() => history.push(`/board/${this.state.boardIdForRedirect}`));
+      .then(() => this.props.SingleBoardThunk(this.state.boardIdForRedirect))
+      .then(() => history.push(`/board/${this.state.boardIdForRedirect}`))
+      .then(() => this.props.close());
   }
 
   render() {
@@ -51,6 +54,6 @@ class SavePinToBoard extends Component {
 }
 
 const mapState = ({ user }) => ({ user });
-const mapDispatch = {};
+const mapDispatch = { SingleBoardThunk };
 export default connect(mapState, mapDispatch)(SavePinToBoard);
 
