@@ -37,7 +37,6 @@ export const UserBoardsThunk = username =>
         dispatch(getUserBoard(res.data));
       })
       .catch((err) => {
-        console.log(err);
         history.push('/404');
       });
 
