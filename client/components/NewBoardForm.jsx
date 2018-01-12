@@ -15,14 +15,7 @@ class NewBoardForm extends Component {
     return (
       <div className="modal is-active">
         <div className="modal-background">
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              this.props.CreateBoardThunk(this.state);
-              this.props.close();
-            }}
-            className="field form-board"
-          >
+          <div className="field form-board">
             <p>Create Board</p>
             <label className="label">Board Title</label>
             <div className="control">
@@ -33,14 +26,22 @@ class NewBoardForm extends Component {
               <input onChange={e => (this.setState({ description: e.target.value }))} className="input" name="escription" type="text" placeholder="ex Hire Brian" />
             </div>
             <div className="board-buttons">
-            <div className="control test">
-              <button onClick={() => (this.props.close())} className="button is-danger">Close</button>
+              <div>
+                <button onClick={() => (this.props.close())} className="button is-danger">Close</button>
+              </div>
+              <div>
+                <button
+                  onClick={((e) => {
+                    e.preventDefault();
+                    this.props.CreateBoardThunk(this.state);
+                    this.props.close();
+                  })}
+                  className="button is-primary"
+                >Create
+              </button>
+              </div>
             </div>
-            <div className="control test">
-              <button type="submit" className="button is-primary">Create</button>
-            </div>
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     );

@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { UserNotFound, PinsInBoard, LaunchPad, AuthForm, NavBar, SinglePin, Boards } from './components';
 import history from './history';
 import { me, pinsThunk } from './redux';
+import NewBoardForm from './components/NewBoardForm'
 
 class Routes extends Component {
   componentDidMount() {
@@ -18,6 +19,8 @@ class Routes extends Component {
         <Fragment>
           <NavBar />
           <Switch>
+            <Route exact path="/test" component={NewBoardForm} />
+
             <Route exact path="/profile/:user" component={Boards} />
             <Route exact path="/login" component={AuthForm} />
             <Route exact path="/signup" component={AuthForm} />

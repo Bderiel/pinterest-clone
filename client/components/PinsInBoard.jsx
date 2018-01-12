@@ -2,11 +2,10 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import { SingleBoardThunk } from '../redux';
 import MultiPinView from './MultiPinView';
 import AddPinForm from './AddPinForm';
-import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
-
 
 
 class PinsInBoard extends Component {
@@ -35,12 +34,12 @@ class PinsInBoard extends Component {
           columnsCountBreakPoints={{ 350: 2, 750: 3, 900: 4 }}
         >
           <Masonry>
-            {this.state.form ? <AddPinForm close={this.handleForm} /> :
-              <Fragment />}
             {this.props.user.name ?
               <div onClick={this.handleForm} className="new-pin">
                 <img src="/assets/add.svg" alt="add pin" />
               </div> : <Fragment />}
+            {this.state.form ? <AddPinForm close={this.handleForm} /> :
+            <Fragment />}
             {pins.length && pins.map(pin => (
               <MultiPinView key={pin._id} id={pin._id} title={pin.description} image={pin.image} />
             ))}
