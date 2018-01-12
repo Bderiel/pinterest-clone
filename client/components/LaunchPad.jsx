@@ -11,7 +11,7 @@ const LaunchPad = function (props) {
     <div className="app container">
       <div className="grid">
         {props.pins.length && props.pins.map(pin => (
-          <MultiPinView key={pin._id} id={pin._id} image={pin.image}/>          
+          <MultiPinView key={pin._id} title={pin.description} id={pin._id} image={pin.image}/>          
           ))}
       </div>
     </div>
