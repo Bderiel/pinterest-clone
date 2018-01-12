@@ -56,9 +56,10 @@ app.use((err, req, res) => {
   console.error(err.stack);
   res.status(err.status || 500).send(err.message || 'Internal server error.');
 });
+// const Mongo = 'mongodb://localhost/pinterest';
+const Mongo = process.env.MONGO_URI;
 
-
-mongoose.connect('mongodb://localhost/pinterest', (err) => {
+mongoose.connect(Mongo, (err) => {
   if (err) {
     console.log('Unable to connect to Mongo.');
   } else {

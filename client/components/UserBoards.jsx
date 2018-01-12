@@ -26,7 +26,7 @@ class Boards extends Component {
     const loggedUser = this.props.user.username;
     return (
       <div className="container">
-        <h1>{boardOwner}'s Boards</h1>
+        <h1 className="title">{boardOwner}'s Boards</h1>
         <div className="flex-container">
           {this.state.form ? <NewBoardForm close={this.handleForm} /> :
             <Fragment />}

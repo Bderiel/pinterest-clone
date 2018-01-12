@@ -42,7 +42,8 @@ class SinglePin extends Component {
             </div>
             <div>
               <p className="desc">{pin.length && pin[0].description}</p>
-              <p>Uploaded by {pin.length && pin[0].author.username}</p>
+              <p>Uploaded by <NavLink to={`/profile/${pin.length && pin[0].author.username}`}>{pin.length && pin[0].author.username}</NavLink> </p>
+              
             </div>
           </div>
         </div>

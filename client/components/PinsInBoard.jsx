@@ -34,7 +34,7 @@ class PinsInBoard extends Component {
           columnsCountBreakPoints={{ 350: 2, 750: 3, 900: 4 }}
         >
           <Masonry>
-            {this.props.user.name ?
+            {this.props.user.username ?
               <div onClick={this.handleForm} className="new-pin">
                 <img src="/assets/add.svg" alt="add pin" />
               </div> : <Fragment />}
