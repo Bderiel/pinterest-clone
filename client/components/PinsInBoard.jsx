@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -38,9 +38,9 @@ class PinsInBoard extends Component {
             {this.props.user.username ?
               <div onClick={this.handleForm} className="new-pin">
                 <img src="/assets/add.svg" alt="add pin" />
-              </div> : <Fragment />}
+              </div> : null}
             {this.state.form ? <AddPinForm close={this.handleForm} /> :
-            <Fragment />}
+            null}
             {board.boardPins.title && pins.map(pin => (
               <MultiPinView key={pin._id} id={pin._id} title={pin.description} image={pin.image} />
             ))}

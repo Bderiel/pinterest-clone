@@ -237,6 +237,7 @@ html, body, #app{
     position: absolute;
     margin-left: 1%;
     cursor: pointer;
+    z-index:1;
     span{
       position: relative;
       top: -3px;
@@ -263,4 +264,12 @@ html, body, #app{
 
 .search-icon{
     color: red;
+}
+
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+.single-content-photo{
+	width: 100vw;
+}
 }
