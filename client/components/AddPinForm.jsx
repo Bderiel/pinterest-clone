@@ -83,10 +83,10 @@ class AddPinForm extends Component {
                 </div>
                 <div className="form-pin-input-button">
                   <div>
-                    <button onClick={this.handleSumbit} className="button">Submit</button>
+                    <button onClick={this.handleSumbit} className="button is-primary">Submit</button>
                   </div>
                   <div>
-                    <button onClick={() => (this.props.close())} className="button">Go Back</button>
+                    <button onClick={() => (this.props.close())} className="button is-danger">Go Back</button>
                   </div>
                 </div>
               </div>
